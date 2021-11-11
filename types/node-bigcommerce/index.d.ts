@@ -30,6 +30,7 @@ interface Config {
     headers?: Record<string, string>
     apiVersion?: string
     failOnLimitReached?: boolean
+    logLevel?: string
 }
 
 interface Query {
@@ -55,8 +56,8 @@ interface VerifyResult {
 
 declare class BigCommerce {
     constructor(config: Config);
-    config: any;
-    apiVersion: any;
+    config: Config;
+    apiVersion: string;
     verify(signedRequest: string): VerifyResult;
     authorize(query: Query): Promise<AuthorizeResult>;
     createAPIRequest(): Request;
